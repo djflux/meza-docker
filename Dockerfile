@@ -1,4 +1,4 @@
-FROM mediawiki:stable-fpm
+FROM mediawiki:stable
 MAINTAINER Andy Rechenberg (github@rechenberg.net)
 
 RUN apt-get update && apt-get install -y \
@@ -24,3 +24,5 @@ RUN apt-get update && apt-get install -y \
         && docker-php-ext-install opcache \
         && docker-php-ext-install soap \
         && docker-php-ext-install xmlrpc
+
+CMD ["apache2-foreground"]
