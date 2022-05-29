@@ -25,4 +25,8 @@ RUN apt-get update && apt-get install -y \
         && docker-php-ext-install soap \
         && docker-php-ext-install xmlrpc
 
+RUN cd /var/www/html/extensions \
+    && git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/StringFunctionsEscaped.git && cd StringFunctionsEscaped && git checkout REL1_37 \
+    # && chown -R 33:33 /var/www/html
+
 CMD ["apache2-foreground"]
